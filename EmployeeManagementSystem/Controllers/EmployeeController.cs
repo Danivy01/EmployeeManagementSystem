@@ -11,6 +11,7 @@ namespace EmployeeManagementSystem.Controllers {
             new Employee { ID = 4, EmployeeID = "MA25318330", FullName = "Josine Cruz", Department = "MITSD", Position = "Team Lead", DateHired = DateTime.Now.AddDays(25) }
         };
 
+        [HttpGet]
         public IActionResult Index() {
             return View(employees);
         }
