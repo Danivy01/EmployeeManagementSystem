@@ -15,5 +15,17 @@ namespace EmployeeManagementSystem.Controllers {
         public IActionResult Index() {
             return View(employees);
         }
+
+        [HttpGet]
+        public IActionResult Create() { 
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee) {
+            employee.ID = employees.Count + 1;
+            employees.Add(employee);
+            return RedirectToAction("Index");
+        }
     }
 }
