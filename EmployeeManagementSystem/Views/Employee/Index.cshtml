@@ -15,6 +15,7 @@
             <th>Department</th>
             <th>Position</th>
             <th>Date Hired</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,11 @@
             <td>@employee.Department</td>
             <td>@employee.Position</td>
             <td>@employee.DateHired.ToShortDateString()</td>
+            <td>
+                <div class="d-flex">
+                    <a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.ID" class="text-primary"><i class="fa-solid fa-pen"></i></a>
+                </div>
+            </td>
         </tr>
     }
     </tbody>

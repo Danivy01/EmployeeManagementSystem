@@ -27,5 +27,30 @@ namespace EmployeeManagementSystem.Controllers {
             employees.Add(employee);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int ID) {
+            var emp = employees.FirstOrDefault(x => x.ID == ID);
+            if (emp == null) {
+                return NotFound();
+            }
+            return View(emp);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Employee employee) {
+            var emp = employees.FirstOrDefault(x => x.ID == employee.ID);
+
+            if (emp == null) {
+                return NotFound();
+            }
+
+            emp.EmployeeID = employee.EmployeeID;
+            emp.FullName = employee.FullName;
+            emp.Department = employee.Department;
+            emp.Position = employee.Position;
+            emp.DateHired = employee.DateHired;
+            return RedirectToAction("Index");
+        }
     }
 }
