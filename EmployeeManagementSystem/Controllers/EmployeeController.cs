@@ -52,5 +52,17 @@ namespace EmployeeManagementSystem.Controllers {
             emp.DateHired = employee.DateHired;
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Delete(int ID) {
+            var emp = employees.FirstOrDefault(x => x.ID == ID);
+
+            if (emp == null) {
+                return NotFound();
+            }
+
+            employees.Remove(emp);
+            return RedirectToAction("Index");
+        }
     }
 }
